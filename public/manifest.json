@@ -1,0 +1,73 @@
+{
+  "name": "Moroc Nights - Premium Nightlife Guide",
+  "short_name": "Moroc Nights",
+  "description": "Discover Morocco's finest restaurants, lounges, rooftops & nightlife",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#D4AF37",
+  "background_color": "#030712",
+  "dir": "ltr",
+  "lang": "fr",
+  "categories": ["entertainment", "lifestyle", "food"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Moroc Nights Homepage"
+    },
+    {
+      "src": "/screenshots/home-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Moroc Nights Mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Explore Marrakech",
+      "short_name": "Marrakech",
+      "url": "/fr/marrakech",
+      "description": "Discover nightlife in Marrakech",
+      "icons": [{ "src": "/icons/shortcut-marrakech.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Explore Casablanca",
+      "short_name": "Casablanca",
+      "url": "/fr/casablanca",
+      "description": "Discover nightlife in Casablanca",
+      "icons": [{ "src": "/icons/shortcut-casablanca.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
