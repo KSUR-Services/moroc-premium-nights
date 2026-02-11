@@ -3,24 +3,10 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { Inter, Playfair_Display } from 'next/font/google';
 import { locales, type Locale } from '@/i18n/config';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import BottomNav from '@/components/layout/BottomNav';
-import '@/app/globals.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
 
 interface LocaleLayoutProps {
   children: ReactNode;
@@ -96,52 +82,31 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html
-      lang={locale}
-      dir="ltr"
-      className={`${inter.variable} ${playfair.variable} dark`}
-      suppressHydrationWarning
-    >
-      <head>
-        <meta name="theme-color" content="#09090b" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="manifest" href="/manifest.json" />
-      </head>
-      <body
-        className={`${inter.className} bg-zinc-950 text-white antialiased selection:bg-amber-500/20 selection:text-amber-200`}
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      {/* Skip to content link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-amber-500 focus:text-zinc-950 focus:rounded-lg focus:text-sm focus:font-medium"
       >
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {/* Skip to content link for accessibility */}
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-amber-500 focus:text-zinc-950 focus:rounded-lg focus:text-sm focus:font-medium"
-          >
-            Skip to content
-          </a>
+        Skip to content
+      </a>
 
-          {/* Site Header */}
-          <Header />
+      {/* Site Header */}
+      <Header />
 
-          {/* Main Content */}
-          <main
-            id="main-content"
-            className="min-h-screen pt-16 lg:pt-18"
-          >
-            {children}
-          </main>
+      {/* Main Content */}
+      <main
+        id="main-content"
+        className="min-h-screen pt-16 lg:pt-18"
+      >
+        {children}
+      </main>
 
-          {/* Site Footer */}
-          <Footer />
+      {/* Site Footer */}
+      <Footer />
 
-          {/* Mobile Bottom Navigation */}
-          <BottomNav />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+      {/* Mobile Bottom Navigation */}
+      <BottomNav />
+    </NextIntlClientProvider>
   );
 }
